@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Viewer</title>
+
+    <style>
+        body{
+            margin:0;
+            background:black;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            min-height:100vh;
+        }
+
+        img{
+            max-width:100%;
+            max-height:100vh;
+        }
+    </style>
+</head>
+
+<body>
+
+<img id="img">
+
+<script>
+const params = new URLSearchParams(window.location.search);
+
+const image = params.get("img");
+
+document.getElementById("img").src =
+    "images/" + image;
+</script>
+
+</body>
+</html>
