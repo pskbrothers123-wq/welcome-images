@@ -1,36 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Gallery</title>
-
-    <style>
-        body{
-            background:#111;
-            color:white;
-            font-family:Arial;
-            text-align:center;
-        }
-
-        a{
-            display:block;
-            color:cyan;
-            margin:15px;
-            font-size:20px;
-            text-decoration:none;
-        }
-    </style>
-</head>
-
-<body>
-
-<h1>Image Gallery</h1>
-
-<div id="gallery"></div>
-
 <script>
 
-const username = "YOUR_GITHUB_USERNAME";
-const repo = "YOUR_REPOSITORY_NAME";
+const username = "pskbrothers123-wq";
+const repo = "welcome-images";
 
 const api =
 `https://api.github.com/repos/${username}/${repo}/contents/images`;
@@ -64,6 +35,3 @@ fetch(api)
 
 });
 </script>
-
-</body>
-</html>
