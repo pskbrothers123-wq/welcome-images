@@ -1,32 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome Images</title>
+    <title>Gallery</title>
 
     <style>
         body{
             background:#111;
             color:white;
-            text-align:center;
             font-family:Arial;
+            text-align:center;
         }
 
-        img{
-            width:300px;
-            margin:20px;
-            border-radius:10px;
+        a{
+            display:block;
+            color:cyan;
+            margin:15px;
+            font-size:20px;
+            text-decoration:none;
         }
     </style>
 </head>
 
 <body>
 
-<h1>Welcome Images</h1>
+<h1>Image Gallery</h1>
 
-<img src="ChatGPT Image May 18, 2026, 06_00_53 PM.png">
-<img src="welcome2.png">
-<img src="luffy.png">
-<img src="gear5.png">
+<div id="gallery"></div>
+
+<script>
+
+const username = "YOUR_GITHUB_USERNAME";
+const repo = "YOUR_REPOSITORY_NAME";
+
+const api =
+`https://api.github.com/repos/${username}/${repo}/contents/images`;
+
+fetch(api)
+.then(res => res.json())
+.then(files => {
+
+    const gallery = document.getElementById("gallery");
+
+    files.forEach(file => {
+
+        if(
+            file.name.endsWith(".png") ||
+            file.name.endsWith(".jpg") ||
+            file.name.endsWith(".jpeg") ||
+            file.name.endsWith(".webp")
+        ){
+
+            const link = document.createElement("a");
+
+            link.href =
+                `viewer.html?img=${file.name}`;
+
+            link.innerText = file.name;
+
+            gallery.appendChild(link);
+        }
+
+    });
+
+});
+</script>
 
 </body>
 </html>
