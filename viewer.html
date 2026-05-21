@@ -25,12 +25,15 @@
 <img id="img">
 
 <script>
-const params = new URLSearchParams(window.location.search);
+
+const params =
+new URLSearchParams(window.location.search);
 
 const image = params.get("img");
 
 document.getElementById("img").src =
-    "images/" + image;
+`images/${image}`;
+
 </script>
 
 </body>
