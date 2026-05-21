@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Gallery</title>
+    <title>Image Gallery</title>
 
     <style>
         body{
@@ -9,6 +9,12 @@
             color:white;
             font-family:Arial;
             text-align:center;
+            margin:0;
+            padding:20px;
+        }
+
+        h1{
+            margin-bottom:40px;
         }
 
         a{
@@ -17,6 +23,11 @@
             margin:15px;
             font-size:20px;
             text-decoration:none;
+            word-break:break-all;
+        }
+
+        a:hover{
+            color:white;
         }
     </style>
 </head>
@@ -33,7 +44,7 @@ const username = "pskbrothers123-wq";
 const repo = "welcome-images";
 
 const api =
-`https://api.github.com/repos/${username}/${repo}/contents/images`;
+`https://api.github.com/repos/${username}/${repo}/contents/Images`;
 
 fetch(api)
 .then(res => res.json())
@@ -53,7 +64,7 @@ fetch(api)
             const link = document.createElement("a");
 
             link.href =
-                `viewer.html?img=${file.name}`;
+                `viewer.html?img=${encodeURIComponent(file.name)}`;
 
             link.innerText = file.name;
 
@@ -64,10 +75,12 @@ fetch(api)
 
 })
 .catch(error => {
+
     document.body.innerHTML +=
-    "<p>ERROR LOADING IMAGES</p>";
+    "<h2>ERROR LOADING IMAGES</h2>";
 
     console.error(error);
+
 });
 
 </script>
